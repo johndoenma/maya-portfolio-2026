@@ -54,8 +54,8 @@
   --unit-2xl: 4rem;
   --unit-3xl: 6rem;
   --unit-4xl: 9rem;
-  --container-width: 1100px;
-  --container-width: 80vw;
+  --container1-width: 1100px;
+  --container2-width: 80vw;
 
   /*  DEFINE ALL FONTS USED HERE */
   --font-headings: "alga", serif;
@@ -104,7 +104,7 @@ body {
   font-size: 1.5rem;
 }
 
-/* HEADING */
+/* ALL HEADINGS */
 
 h1 {
   font-family: var(--font-headings);
@@ -132,6 +132,7 @@ h4 {
   color: #D5B339;
 }
 
+/* ALL LINKS */
 a {
   color:#333;
     &:hover {
@@ -140,85 +141,11 @@ a {
 
 }
 
-/* clamp(最小, 可変, 最大) 画面の大きさによってfontのサイズを変更 */
-.section1 h1,
-.section2 h1 {
-  font-size: clamp(24px, 6vw, 35px);
-}
-
-.section1 h2 {
-  font-size: clamp(30px, 3.2vw, 80px);
-}
-
-.section1 p,
-.section2 p {
-  font-size: clamp(20px, 1.8vw, 30px);
-}
-
-.section1 a.button {
-  /* color: #333; */
-  display: inline-block;
-  font-size: .8em;
-  margin-top: .5em;;
-  color: white;
-  text-decoration: none;
-}
-
-
-/* HEADING LAYOUT */
-
-
-.section1,
-.section2 {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.section1 h1,
-.section2 h1 {
-  position: fixed;
-  top: 250px;
-  left: 150px;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-
-  margin: 0;
-  line-height: 1;
-  letter-spacing: 0.15em;
-
-  translate: 0 -0.1em;
-  z-index: 1000;
-
-  transform-origin: left top;
-  text-indent: 1.35em;
-  letter-spacing: 0.08em;
-  line-height: 1.3;
-  padding-left: 0;
-}
-
-
 
 
 /* BASE RAYOUT */
 
 /* CONTAINERS */
-.container2 {
-  max-width: var(--container-width);
-}
-
-.container2 p {
-  /* max-width: 700px; */
-}
-
-/* .section4 {
-  border: 1px solid red;
-} */
-
-.zindex-container {
-  /* background-color: #000000; */
-}
 
 .container {
   /* border: 1px solid rgb(43, 0, 255); */
@@ -226,6 +153,12 @@ a {
   margin: 0 auto;
   padding-inline: 2em;
 }
+
+.container2 {
+  max-width: var(--container2-width);
+}
+
+
 
 /* #GRID SYSTEM */
 /* GRID SYSTEM (12 column) */
@@ -416,7 +349,45 @@ a {
 }
 
 
-/* GSAP */
+/* GSAP HERO SECTION*/
+
+.hero {
+  padding: 0;
+  color: white;
+}
+
+.hero h2 {
+  font-size: clamp(30px, 3.2vw, 80px);
+  margin: 0 0 2em 0;
+}
+
+.hero p {
+  text-wrap: balance;
+  margin-inline: auto;
+  max-width: 45ch;
+  text-align: center;
+  font-size: clamp(20px, 1.8vw, 30px);
+}
+
+
+.hero a.button {
+  /* color: #333; */
+  display: inline-block;
+  font-size: .8em;
+  margin-top: .5em;;
+  color: white;
+  text-decoration: none;
+}
+
+.section1,
+.section2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+
 
 
 html,
@@ -436,24 +407,7 @@ body {
   /* background: #000; */
 }
 
-.normal-container {
-  /* position: relative; */
-  /* top: 50vh; */
-  /* width: 100%; */
-  /* z-index: 0; */
-  /* padding: 20px; */
 
-  /* border: 10px solid red; */
-}
-
-section {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* max-width: 300vh; */
-  /* width: 1000vh; */
-  background-color: #ffffff;
-}
 
 .panel {
   display: flex;
@@ -469,7 +423,8 @@ section {
 }
 
 .section1 {
-  background-color: #c19b66;
+  /* background-color: #c19b66; */
+  background-color: rgba(193, 155, 102, 0.5);
   z-index: 3;
 }
 
@@ -477,6 +432,18 @@ section {
   background-color: #c19b66;
   z-index: 2;
 }
+
+.section2 .video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+
 
 .site-main {
   position: relative;
@@ -535,6 +502,7 @@ img {
   margin: 0;
   font-family: var(--font-body);
   margin: 0;
+
 }
 
 .site-title a {
@@ -569,11 +537,15 @@ img {
 
 /* FOOTER */
 .site-footer {
-  padding: 100px 1em;
+  padding: 100px 1em 70px 1em;
   background-color: #D5B339;
   color: white;
   width: 100%;
   /* border-top: 1px solid #1c1c1c; */
+
+  h2 {
+    margin: 0;
+  }
 
   a {
     color: white;
@@ -594,25 +566,7 @@ img {
 
 /* hero #BASE SITE */
 
-.hero {
-  padding: 0;
-  color: white;
-}
 
-.hero img {
-  /* border: 10px solid green; */
-  /* width: 80%; */
-  /* padding-top: 100px; */
-  justify-content: space-between;
-
-}
-
-.hero p {
-  text-wrap: balance;
-  margin-inline: auto;
-  max-width: 45ch;
-  text-align: center;
-}
 
 section {
   padding-block: 2em;
@@ -663,6 +617,9 @@ h2 span {
   .site-header .site-nav a {
     color: #c19b66;
   }
+  .site-title a span {
+    color: #D5B339;
+}
 }
 
 /* FUL WIDTH IMAGES */
